@@ -1,18 +1,29 @@
 require 'sinatra'
-require 'date'
 
-get '/tomorrow' do 
-	"Tomorrow is #{tomorrows_date}"
+get '/federal_holidays' do 
+	output = "List of Federal Holidays\n"
+	output << "_______________________\n"
+	output << "\n\n"
+
+	list_of_holidays.each do |holiday| 
+		output << "#{holiday}"
+	end
+	
+	output 
 end
 
-get '/day_after_tomorrow' do 
-	day_after = tomorrows_date + 1 
-	"The day after tomorrow is #{day_after}"
+def list_of_holidays 
+	[ "New Years Day",
+   "MLK Jr Day",
+   "Washington's Birthday",
+   "Memorial Day",
+   "Independence Day",
+   "Labor Day",
+   "Columbus Day",
+   "Veteran's Day",
+   "Thanksgiving Day",
+   "Christmas Day"
+ ]
 end
-
-def tomorrows_date 
-	Date.today + 1 
-end
-
 
 
