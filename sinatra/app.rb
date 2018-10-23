@@ -7,6 +7,11 @@ get '/federal_holidays' do
   erb :federal_holidays, locals: { holidays: list_of_holidays }
 end
 
+get '/chicago_holidays' do 
+  chicago_holidays = list_of_holidays + ["Casimir Pulaski Day"]
+  erb :chicago_holidays, locals: {holidays: chicago_holidays}
+end
+
 def list_of_holidays
  [ "New Years Day",
    "MLK Jr Day",
